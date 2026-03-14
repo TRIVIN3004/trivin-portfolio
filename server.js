@@ -23,7 +23,7 @@ app.get('/api/portfolio', (req, res) => {
             title: "AI student | AI & ML Enthusiast",
 
             skills: [
-                "MongoDB", "React.js", "Python", "C++",
+                "MongoDB", "React.js", "Python", "C",
                 "Machine Learning", "Deep Learning",
                 "OpenCV", "MediaPipe", "SQL", "Excel",
                 "Communication",
