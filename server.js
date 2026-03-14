@@ -65,7 +65,17 @@ app.get('/api/portfolio', (req, res) => {
                     title: "Virtual Mouse Using Hand Gestures",
                     tech: "OpenCV, MediaPipe",
                     description: "Controls mouse movements using real-time hand tracking."
-                }
+                },
+                {
+                    title: "ROADSENSE AI",
+                    tech: "Python, OpenCV, YOLO, TensorFlow, NumPy, Streamlit",
+                    description: "Developed an AI-based system to monitor road conditions and detect hazards using computer vision,Implemented real-time object detection to identify obstacles and unsafe road situations,Built a dashboard to visualize alerts and road analytics"
+                },
+                {
+                    title: "Hospital AI Assistant (LCNC Project)",
+                    tech: "OpenAI API, Firebase, Webhooks, REST APIs",
+                    description: "Built an automated AI workflow using low-code platforms to analyze road safety reports."
+                },
             ],
 
             experience: [
