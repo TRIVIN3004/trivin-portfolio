@@ -165,23 +165,32 @@ h1 {
   border-radius: 8px;
   font-weight: 600;
   margin-right: 12px;
-  transition: 0.2s;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+  display: inline-block;
 }
 
 .btn:hover {
   background: #7c6dff;
-  box-shadow: 0 0 16px var(--accent-soft);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 4px 16px var(--accent-soft);
+}
+
+.btn:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 2px 8px var(--accent-soft);
 }
 
 .btn.outline {
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--text);
 }
 
 .btn.outline:hover {
   color: var(--accent);
   border-color: var(--accent);
+  background: rgba(107, 92, 255, 0.05); /* Slight tint on hover */
 }
 
 /* ============================
@@ -239,12 +248,32 @@ section {
   padding: 18px;
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.07);
-  transition: 250ms ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 0%, rgba(107, 92, 255, 0.15) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
 }
 
 .project-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 0 20px rgba(107, 92, 255, 0.35);
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(107, 92, 255, 0.25);
+  border-color: rgba(107, 92, 255, 0.4);
+}
+
+.project-card:hover::before {
+  opacity: 1;
 }
 
 .project-btn {
@@ -255,11 +284,17 @@ section {
   color: white;
   border-radius: 8px;
   cursor: pointer;
-  transition: 0.25s;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .project-btn:hover {
   background: #7c6dff;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(107, 92, 255, 0.3);
+}
+
+.project-btn:active {
+  transform: scale(0.96);
 }
 
 /* ============================
@@ -288,12 +323,49 @@ section {
   background: #111a2d;
   padding: 14px;
   border-radius: 10px;
-  transition: 0.25s;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: default;
 }
 
 .achievements-grid li:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 14px rgba(107, 92, 255, 0.35);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(107, 92, 255, 0.2);
+  border-color: rgba(107, 92, 255, 0.3);
+}
+
+.achievements-grid li:active {
+  transform: translateY(-2px);
+}
+
+/* ============================
+   SKILLS PILL LABELS
+============================ */
+#skillsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  list-style: none; /* Override default markdown list bullet */
+  padding: 0;
+}
+
+#skillsList li {
+  background: rgba(107, 92, 255, 0.1);
+  color: #c7d2fe;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid rgba(107, 92, 255, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: default;
+}
+
+#skillsList li:hover {
+  background: rgba(107, 92, 255, 0.2);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 4px 12px rgba(107, 92, 255, 0.15);
+  color: white;
 }
 
 /* ============================
@@ -310,13 +382,18 @@ section {
 }
 
 .modal-content {
-  background: #101827;
+  background: rgba(16, 24, 39, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   padding: 24px;
   width: 90%;
   max-width: 520px;
   border-radius: 12px;
-  box-shadow: 0 0 24px rgba(107, 92, 255, 0.35);
-  animation: scaleUp 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 24px rgba(107, 92, 255, 0.2);
+  transform: translateY(20px);
+  opacity: 0;
+  animation: modalEnter 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .close {
@@ -337,6 +414,65 @@ section {
   text-align: center;
   padding: 28px 0;
   opacity: 0.7;
+}
+
+.footer a {
+  color: var(--accent);
+  text-decoration: none;
+  position: relative;
+  transition: opacity 0.2s ease;
+}
+
+.footer a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--accent);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.footer a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* ============================
+   SOCIAL LINKS
+============================ */
+.socials {
+  margin-top: 24px;
+  display: flex;
+  gap: 16px;
+}
+
+.socials a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+}
+
+.socials a:hover {
+  background: rgba(107, 92, 255, 0.15);
+  border-color: rgba(107, 92, 255, 0.4);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(107, 92, 255, 0.2);
+}
+
+.socials a:active {
+  transform: translateY(1px);
 }
 
 /* ============================
@@ -363,6 +499,17 @@ section {
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@keyframes modalEnter {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 

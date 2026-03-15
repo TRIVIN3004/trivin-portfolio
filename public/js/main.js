@@ -84,6 +84,11 @@ let showAll = false;
 function initShowAllButton(allProjects) {
     const btn = document.getElementById("showProjectsBtn");
 
+    if (allProjects.length <= 2) {
+        btn.style.display = "none";
+        return;
+    }
+
     btn.addEventListener("click", () => {
         showAll = !showAll;
 
@@ -91,7 +96,7 @@ function initShowAllButton(allProjects) {
             btn.textContent = "Show Less";
             renderProjects(allProjects);
         } else {
-            btn.textContent = "Show All";
+            btn.textContent = "Show All Projects";
             renderProjects(allProjects.slice(0, 2));
         }
     });
