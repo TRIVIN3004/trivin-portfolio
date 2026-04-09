@@ -31,7 +31,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center">
           <div className="flex-shrink-0">
             <Link to="home" smooth={true} duration={500} className="cursor-pointer text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-neonBlue to-neonPurple">
-              TRIVIN.AI
+              TRIVIN S.
             </Link>
           </div>
           
