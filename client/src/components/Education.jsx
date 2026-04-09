@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
-import { GraduationCap, School, FileText } from 'lucide-react';
-import resumePdf from '../../../public/resume.pdf';
+import { GraduationCap, School } from 'lucide-react';
 
 const educationList = [
   {
@@ -108,23 +107,6 @@ const Education = () => {
             );
           })}
         </div>
-
-        <motion.div
-           initial={{ opacity: 0, y: 30 }}
-           whileInView={{ opacity: 1, y: 0 }}
-           viewport={{ once: true }}
-           transition={{ duration: 0.5, delay: 0.4 }}
-           className="mt-16"
-        >
-          <a 
-            href={resumePdf} 
-            download="Trivin_S_Resume.pdf" 
-            className="flex items-center gap-2 px-8 py-3 rounded-full bg-gradient-to-r from-neonBlue to-neonPurple text-white font-semibold hover:shadow-[0_0_20px_#45f3ff] transition-all duration-300"
-          >
-            <FileText size={20} />
-            Download Resume
-          </a>
-        </motion.div>
       </div>
     </section>
   );
