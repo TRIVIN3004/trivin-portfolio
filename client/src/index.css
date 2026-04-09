@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .glass {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 shadow-lg;
+  }
+  .glass-hover {
+    @apply hover:bg-white/10 transition-all duration-300;
+  }
+  .text-glow {
+    text-shadow: 0 0 10px rgba(69, 243, 255, 0.7);
+  }
+}
+
+/* Background blob effects */
+.bg-blob {
+  position: absolute;
+  filter: blur(100px);
+  z-index: -1;
+  opacity: 0.4;
+  border-radius: 50%;
+}
+
+.blob-1 {
+  top: 10%;
+  left: 20%;
+  width: 300px;
+  height: 300px;
+  background: #b026ff;
+}
+
+.blob-2 {
+  bottom: 20%;
+  right: 15%;
+  width: 400px;
+  height: 400px;
+  background: #45f3ff;
+}

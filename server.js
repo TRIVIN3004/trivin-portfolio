@@ -11,7 +11,7 @@ const PORT = 5000;
 // =========================
 app.use(cors());
 app.use(express.json());
-app.use(express.static('public')); // Serve your portfolio frontend
+app.use(express.static(path.join(__dirname, 'client', 'dist'))); // Serve your portfolio frontend
 
 // =========================
 // Portfolio Data API
@@ -191,7 +191,7 @@ app.get('/resume', (req, res) => {
 // SPA Fallback
 // =========================
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
 });
 
 // =========================
