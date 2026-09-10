@@ -4,37 +4,54 @@
 
 @layer utilities {
   .glass {
-    @apply bg-white/5 backdrop-blur-md border border-white/10 shadow-lg;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
   }
   .glass-hover {
-    @apply hover:bg-white/10 transition-all duration-300;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .glass-hover:hover {
+    background: rgba(255, 255, 255, 0.055);
+    border-color: rgba(69, 243, 255, 0.3);
+    box-shadow: 0 12px 30px -10px rgba(69, 243, 255, 0.15);
   }
   .text-glow {
-    text-shadow: 0 0 10px rgba(69, 243, 255, 0.7);
+    text-shadow: 0 0 12px rgba(69, 243, 255, 0.5);
+  }
+  .text-glow-purple {
+    text-shadow: 0 0 12px rgba(176, 38, 255, 0.5);
   }
 }
 
-/* Background blob effects */
-.bg-blob {
+/* Subtle dot-grid ambient background texture */
+.bg-grid-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Ambient glow orbs */
+.ambient-glow {
   position: absolute;
-  filter: blur(100px);
-  z-index: -1;
-  opacity: 0.4;
-  border-radius: 50%;
+  border-radius: 9999px;
+  pointer-events: none;
+  filter: blur(120px);
+  z-index: 0;
 }
 
-.blob-1 {
-  top: 10%;
-  left: 20%;
-  width: 300px;
-  height: 300px;
-  background: #b026ff;
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
 }
-
-.blob-2 {
-  bottom: 20%;
-  right: 15%;
-  width: 400px;
-  height: 400px;
-  background: #45f3ff;
+::-webkit-scrollbar-track {
+  background: #0B0C10;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(69, 243, 255, 0.4);
 }

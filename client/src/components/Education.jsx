@@ -49,7 +49,7 @@ const educationList = [
 
 const Education = () => {
   return (
-    <section id="education" className="py-20 relative bg-darkBg">
+    <section id="education" className="py-20 relative">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
         <motion.div
           initial={{ opacity: 0, y: 50 }}

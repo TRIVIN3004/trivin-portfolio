@@ -8,9 +8,9 @@ import resumePdf from '../../../public/resume.pdf';
 const Hero = () => {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
-      {/* Background blobs are handled in CSS */}
-      <div className="bg-blob blob-1"></div>
-      <div className="bg-blob blob-2"></div>
+      {/* Subtle focal lights behind hero content */}
+      <div className="absolute top-1/3 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-neonBlue/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-96 h-96 bg-neonPurple/10 rounded-full blur-3xl pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col md:flex-row items-center">
         

@@ -50,28 +50,52 @@ function App() {
   }
 
   return (
-    <div className="relative">
-      <Navbar />
-      <Hero />
-      <About />
-      <Education />
-      <Skills />
-      <Projects />
-      <Experience />
-      <Achievements />
-      <Certifications />
-      <Contact />
-      
-      <footer className="py-8 border-t border-white/10 text-center">
-        <p className="text-gray-500 text-sm">
-          © {new Date().getFullYear()} Trivin S. All rights reserved.
-        </p>
-      </footer>
+    <div className="relative min-h-screen bg-[#0B0C10] text-gray-200 overflow-x-hidden">
+      {/* Global simple and attractive ambient lighting effects */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        {/* Subtle dot matrix grid pattern */}
+        <div className="absolute inset-0 bg-grid-pattern opacity-30"></div>
+
+        {/* Top-left soft cyan ambient glow */}
+        <div className="ambient-glow w-[500px] h-[500px] -top-32 -left-32 bg-neonBlue/15 animate-float-slow"></div>
+
+        {/* Top-right soft purple ambient glow */}
+        <div className="ambient-glow w-[550px] h-[550px] top-[15%] -right-36 bg-neonPurple/15 animate-float-reverse"></div>
+
+        {/* Mid-section subtle indigo glow */}
+        <div className="ambient-glow w-[450px] h-[450px] top-[45%] -left-28 bg-[#7928ca]/12 animate-pulse-subtle"></div>
+
+        {/* Lower-section cyan accent */}
+        <div className="ambient-glow w-[600px] h-[600px] top-[70%] -right-32 bg-neonBlue/12 animate-float-slow"></div>
+
+        {/* Bottom subtle violet ambient light */}
+        <div className="ambient-glow w-[500px] h-[500px] -bottom-36 left-[20%] bg-neonPurple/15 animate-float-reverse"></div>
+      </div>
+
+      {/* Main Content */}
+      <div className="relative z-10">
+        <Navbar />
+        <Hero />
+        <About />
+        <Education />
+        <Skills />
+        <Projects />
+        <Experience />
+        <Achievements />
+        <Certifications />
+        <Contact />
+        
+        <footer className="py-8 border-t border-white/10 text-center bg-black/20 backdrop-blur-sm">
+          <p className="text-gray-500 text-sm">
+            © {new Date().getFullYear()} Trivin S. All rights reserved.
+          </p>
+        </footer>
+      </div>
 
       {showScrollTop && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 p-3 rounded-full bg-gradient-to-r from-neonBlue to-neonPurple text-white shadow-[0_0_15px_rgba(69,243,255,0.5)] z-40 hover:scale-110 transition-transform duration-300"
+          className="fixed bottom-8 right-8 p-3 rounded-full bg-gradient-to-r from-neonBlue to-neonPurple text-white shadow-[0_0_15px_rgba(69,243,255,0.4)] z-40 hover:scale-110 transition-transform duration-300 backdrop-blur-sm"
         >
           <ArrowUp size={24} />
         </button>
