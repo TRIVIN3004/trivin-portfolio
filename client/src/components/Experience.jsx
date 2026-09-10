@@ -3,6 +3,18 @@ import { Briefcase, BookOpen, Globe, Code } from 'lucide-react';
 
 const experiences = [
   {
+    type: "internship",
+    title: "IT Intern",
+    organization: "JK Tyre & Industries Ltd",
+    duration: "July 2026 – September 2026",
+    icon: <Briefcase size={24} />,
+    points: [
+      "Engineered the Scanner Fall Detection and Alert System for real-time industrial safety monitoring",
+      "Managed IT operations, system reliability, and industrial automation support",
+      "Collaborated with cross-functional engineering teams to implement real-time incident alerting mechanisms"
+    ]
+  },
+  {
     type: "bootcamp",
     title: "International Bootcamp on AI, ML, IoT & Power BI",
     organization: "Universiti Sains Islam Malaysia (USIM), Malaysia",

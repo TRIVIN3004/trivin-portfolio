@@ -3,6 +3,13 @@ import { ExternalLink, Github } from 'lucide-react';
 
 const projectsList = [
   {
+    title: "Scanner Fall Detection and Alert System for JK Tyres",
+    description: "Real-time computer vision and safety alert system developed for JK Tyre & Industries Ltd to monitor equipment, detect scanner drop/fall incidents, and dispatch immediate alerts.",
+    tech: ["Python", "Computer Vision", "OpenCV", "Deep Learning", "IoT Alerts"],
+    github: "#",
+    live: "#"
+  },
+  {
     title: "AI CloudGPT",
     description: "Cloud optimization assistant powered by advanced AI models. Helps manage and analyze cloud resources.",
     tech: ["Python", "OpenAI", "React", "AWS"],

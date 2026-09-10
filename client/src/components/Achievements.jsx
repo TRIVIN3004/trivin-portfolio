@@ -7,7 +7,7 @@ const achievements = [
   { title: "Paper Presentation", text: "Third Prize – National Level Paper Presentation, JIT" },
   { title: "Paper Presentation", text: "First Prize – Paper Presentation, Tagore Engineering College" },
   { title: "Award for Co-Curricular", text: "Award for Co-Curricular Activities at JIT" },
-  { title: "Internship & Training", text: "Intel AI/ML training & Lunar A Quest Tech Internship" }
+  { title: "Internship & Training", text: "JK Tyre & Industries Ltd, Lunar A Quest Tech & Intel AI/ML Training" }
 ];
 
 const Achievements = () => {
