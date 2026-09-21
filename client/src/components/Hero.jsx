@@ -1,84 +1,167 @@
 import { Typewriter } from 'react-simple-typewriter';
 import { motion } from 'framer-motion';
 import { Link } from 'react-scroll';
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail, Sparkles, Cpu, Layers } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
+import Card3D from './Card3D';
 import profileImg from '../../../public/img/profile.png';
 import resumePdf from '../../../public/resume.pdf';
 
 const Hero = () => {
-  return (
-    <section id="home" className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
-      {/* Subtle focal lights behind hero content */}
-      <div className="absolute top-1/3 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-neonBlue/10 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-96 h-96 bg-neonPurple/10 rounded-full blur-3xl pointer-events-none"></div>
+  const { isDark } = useTheme();
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col md:flex-row items-center">
+  return (
+    <section id="home" className="min-h-[85vh] md:min-h-[90vh] flex items-center justify-center pt-20 pb-8 md:pt-24 md:pb-10 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full flex flex-col-reverse md:flex-row items-center justify-between gap-8 md:gap-12">
         
+        {/* Left Text & CTA */}
         <motion.div 
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          className="md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left pt-10 md:pt-0"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left"
         >
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">
-            Hi, I'm <span className="whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-r from-neonBlue to-neonPurple">Trivin S</span>
+          {/* Pill Badge */}
+          <div
+            className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold mb-5 backdrop-blur-md border ${
+              isDark 
+                ? 'bg-white/5 border-neonBlue/30 text-neonBlue'
+                : 'bg-indigo-50 border-indigo-200 text-indigo-600 shadow-sm'
+            }`}
+          >
+            <Sparkles size={13} className="text-neonBlue" />
+            <span>AI & Machine Learning Engineer</span>
+          </div>
+
+          <h1 className={`text-3xl sm:text-4xl md:text-6xl font-extrabold mb-3 tracking-tight leading-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>
+            Hi, I'm{' '}
+            <span className="whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-r from-neonBlue via-indigo-400 to-neonPurple">
+              Trivin S
+            </span>
           </h1>
-          <h2 className="text-2xl md:text-3xl font-medium mb-6 h-12">
-            <span style={{ color: '#45f3ff', fontWeight: 'bold' }}>
+
+          <div className="h-10 sm:h-12 mb-4 flex items-center justify-center md:justify-start">
+            <span className={`text-lg sm:text-2xl md:text-3xl font-bold ${isDark ? 'text-neonBlue' : 'text-indigo-600'}`}>
               <Typewriter
-                words={['AI Engineer', 'Hackathon Winner', 'Problem Solver', 'Data Science Student']}
+                words={['AI & ML Engineer', 'Computer Vision Developer', 'Hackathon Winner', 'Problem Solver']}
                 loop={0}
                 cursor
                 cursorStyle='_'
                 typeSpeed={70}
                 deleteSpeed={50}
-                delaySpeed={1000}
+                delaySpeed={1200}
               />
             </span>
-          </h2>
-          <p className="text-gray-400 mb-8 max-w-lg text-lg">
-            Passionate AI and Data Science student skilled in Machine Learning, Computer Vision, and Full Stack Development.
+          </div>
+
+          <p className={`mb-8 max-w-lg text-sm sm:text-base md:text-lg leading-relaxed ${isDark ? 'text-gray-300' : 'text-slate-600'}`}>
+            Passionate AI and Data Science engineer specializing in Machine Learning, Computer Vision, industrial automation, and scalable full-stack applications.
           </p>
           
-          <div className="flex gap-4 mb-8">
-            <Link to="projects" smooth={true} duration={500} className="cursor-pointer px-6 py-3 rounded-full bg-gradient-to-r from-neonBlue to-neonPurple text-white font-semibold hover:shadow-[0_0_15px_#45f3ff] transition-all duration-300">
-              View Projects
+          {/* Action Buttons */}
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 w-full sm:w-auto max-w-sm sm:max-w-none">
+            <Link 
+              to="projects" 
+              smooth={true} 
+              duration={500} 
+              className="cursor-pointer text-center px-6 py-3.5 rounded-full bg-gradient-to-r from-neonBlue to-neonPurple text-white text-sm font-semibold hover:opacity-90 active:scale-95 transition-all shadow-md"
+            >
+              Explore Projects
             </Link>
-            <a href={resumePdf} download="Trivin_S_Resume.pdf" className="px-6 py-3 rounded-full border border-neonPurple text-white font-semibold hover:bg-neonPurple/20 transition-all duration-300">
+            <a 
+              href={resumePdf} 
+              download="Trivin_S_Resume.pdf" 
+              className={`text-center px-6 py-3.5 rounded-full text-sm font-semibold border transition-all active:scale-95 ${
+                isDark
+                  ? 'border-neonPurple text-white hover:bg-neonPurple/20'
+                  : 'border-indigo-500 text-indigo-600 hover:bg-indigo-50 shadow-sm'
+              }`}
+            >
               Download Resume
             </a>
           </div>
 
-          <div className="flex gap-6">
-            <a href="https://github.com/TRIVIN3004" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white hover:scale-110 transition-all duration-300">
-              <Github size={24} />
+          {/* Social Links */}
+          <div className="flex gap-3.5">
+            <a 
+              href="https://github.com/TRIVIN3004" 
+              target="_blank" 
+              rel="noreferrer" 
+              aria-label="GitHub"
+              className={`w-10 h-10 rounded-full flex items-center justify-center transition-all ${
+                isDark 
+                  ? 'bg-white/5 text-gray-300 hover:text-white hover:bg-white/10' 
+                  : 'bg-white text-slate-700 hover:text-indigo-600 shadow-sm border border-slate-200'
+              }`}
+            >
+              <Github size={18} />
             </a>
-            <a href="https://www.linkedin.com/in/trivin-s-a88944292" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-[#45f3ff] hover:scale-110 transition-all duration-300">
-              <Linkedin size={24} />
+            <a 
+              href="https://www.linkedin.com/in/trivin-s-a88944292" 
+              target="_blank" 
+              rel="noreferrer" 
+              aria-label="LinkedIn"
+              className={`w-10 h-10 rounded-full flex items-center justify-center transition-all ${
+                isDark 
+                  ? 'bg-white/5 text-gray-300 hover:text-neonBlue hover:bg-white/10' 
+                  : 'bg-white text-slate-700 hover:text-sky-600 shadow-sm border border-slate-200'
+              }`}
+            >
+              <Linkedin size={18} />
             </a>
-            <a href="mailto:trivintrivin2005@gmail.com" className="text-gray-400 hover:text-white hover:scale-110 transition-all duration-300">
-              <Mail size={24} />
+            <a 
+              href="mailto:trivintrivin2005@gmail.com" 
+              aria-label="Email"
+              className={`w-10 h-10 rounded-full flex items-center justify-center transition-all ${
+                isDark 
+                  ? 'bg-white/5 text-gray-300 hover:text-neonPurple hover:bg-white/10' 
+                  : 'bg-white text-slate-700 hover:text-indigo-600 shadow-sm border border-slate-200'
+              }`}
+            >
+              <Mail size={18} />
             </a>
           </div>
         </motion.div>
 
+        {/* Right Avatar */}
         <motion.div 
-          initial={{ opacity: 0, scale: 0.8 }}
+          initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="md:w-1/2 flex justify-center mt-12 md:mt-0"
+          transition={{ duration: 0.7 }}
+          className="w-full md:w-1/2 flex flex-col items-center justify-center relative"
         >
-          <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full p-1 bg-gradient-to-r from-neonBlue to-neonPurple animate-glow">
-            <div className="w-full h-full rounded-full overflow-hidden border-4 border-darkBg">
-              <img 
-                src={profileImg} 
-                alt="Trivin S" 
-                className="w-full h-full object-cover"
-                onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src = "https://via.placeholder.com/400x400/1a1a2e/45f3ff?text=TS";
-                }}
-              />
+          <div className="relative flex items-center justify-center">
+            {/* Avatar Circle with gradient ring */}
+            <Card3D maxTilt={10} depth={20} className="flex items-center justify-center">
+              <div className="relative w-48 h-48 sm:w-60 sm:h-60 md:w-72 md:h-72 rounded-full p-1 bg-gradient-to-tr from-neonBlue via-indigo-500 to-neonPurple shadow-xl">
+                <div className={`w-full h-full rounded-full overflow-hidden border-4 ${isDark ? 'border-darkBg' : 'border-white'}`}>
+                  <img 
+                    src={profileImg} 
+                    alt="Trivin S" 
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = "https://via.placeholder.com/400x400/1a1a2e/45f3ff?text=TS";
+                    }}
+                  />
+                </div>
+              </div>
+            </Card3D>
+          </div>
+
+          {/* Mobile-Friendly Feature Chips */}
+          <div className="flex flex-wrap justify-center gap-2 mt-4 max-w-xs">
+            <div className={`px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1.5 border ${
+              isDark ? 'bg-white/5 border-neonBlue/30 text-neonBlue' : 'bg-white border-sky-200 text-sky-700 shadow-sm'
+            }`}>
+              <Cpu size={13} />
+              <span>AI & Computer Vision</span>
+            </div>
+            <div className={`px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1.5 border ${
+              isDark ? 'bg-white/5 border-neonPurple/30 text-neonPurple' : 'bg-white border-purple-200 text-purple-700 shadow-sm'
+            }`}>
+              <Layers size={13} />
+              <span>JK Tyre & AI R&D</span>
             </div>
           </div>
         </motion.div>

@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -9,8 +10,12 @@ export default {
       colors: {
         darkBg: "#0B0C10",
         darkCard: "rgba(255, 255, 255, 0.04)",
+        lightBg: "#F4F7FB",
+        lightCard: "rgba(255, 255, 255, 0.85)",
         neonBlue: "#45f3ff",
         neonPurple: "#b026ff",
+        accentBlue: "#0284c7",
+        accentPurple: "#7c3aed",
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
@@ -20,6 +25,8 @@ export default {
         'float-slow': 'floatSlow 14s ease-in-out infinite alternate',
         'float-reverse': 'floatReverse 16s ease-in-out infinite alternate',
         'pulse-subtle': 'pulseSubtle 9s ease-in-out infinite',
+        'float-3d': 'float3D 6s ease-in-out infinite alternate',
+        'spin-slow': 'spin 20s linear infinite',
       },
       keyframes: {
         glow: {
@@ -39,9 +46,15 @@ export default {
         pulseSubtle: {
           '0%, 100%': { opacity: '0.12' },
           '50%': { opacity: '0.24' },
+        },
+        float3D: {
+          '0%': { transform: 'translateY(0px) rotateX(0deg) rotateY(0deg)' },
+          '50%': { transform: 'translateY(-12px) rotateX(6deg) rotateY(8deg)' },
+          '100%': { transform: 'translateY(0px) rotateX(0deg) rotateY(0deg)' },
         }
       }
     },
   },
   plugins: [],
 }
+

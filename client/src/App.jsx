@@ -9,18 +9,20 @@ import Experience from './components/Experience';
 import Achievements from './components/Achievements';
 import Certifications from './components/Certifications';
 import Contact from './components/Contact';
+import { ThemeProvider, useTheme } from './context/ThemeContext';
 import { animateScroll as scroll } from 'react-scroll';
 import { ArrowUp } from 'lucide-react';
 
-function App() {
+function PortfolioContent() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [loading, setLoading] = useState(true);
+  const { isDark } = useTheme();
 
   useEffect(() => {
-    // Simulate loading screen
+    // Quick, clean initial loader
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1500);
+    }, 600);
 
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 400);
@@ -39,40 +41,30 @@ function App() {
 
   if (loading) {
     return (
-      <div className="fixed inset-0 bg-[#0B0C10] flex items-center justify-center z-50">
-        <div className="relative w-24 h-24">
-          <div className="absolute inset-0 rounded-full border-t-4 border-neonBlue animate-spin"></div>
-          <div className="absolute inset-2 rounded-full border-t-4 border-neonPurple animate-spin animation-delay-150"></div>
-          <div className="absolute inset-4 rounded-full border-t-4 border-white animate-spin animation-delay-300"></div>
+      <div className={`fixed inset-0 ${isDark ? 'bg-[#0B0C10]' : 'bg-[#F8FAFC]'} flex items-center justify-center z-50 transition-colors duration-300`}>
+        <div className="relative w-16 h-16">
+          <div className="absolute inset-0 rounded-full border-t-3 border-neonBlue animate-spin"></div>
+          <div className="absolute inset-2 rounded-full border-t-3 border-neonPurple animate-spin animation-delay-150"></div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="relative min-h-screen bg-[#0B0C10] text-gray-200 overflow-x-hidden">
-      {/* Global simple and attractive ambient lighting effects */}
+    <div className={`relative min-h-screen ${isDark ? 'bg-[#0B0C10] text-gray-200' : 'bg-[#F8FAFC] text-slate-800'} overflow-x-hidden transition-colors duration-300 selection:bg-neonBlue/30 selection:text-white`}>
+      {/* Clean, Subtle, Non-distracting Ambient Background */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        {/* Subtle dot matrix grid pattern */}
-        <div className="absolute inset-0 bg-grid-pattern opacity-30"></div>
+        {/* Subtle grid pattern */}
+        <div className="absolute inset-0 bg-grid-pattern opacity-25"></div>
 
-        {/* Top-left soft cyan ambient glow */}
-        <div className="ambient-glow w-[500px] h-[500px] -top-32 -left-32 bg-neonBlue/15 animate-float-slow"></div>
-
-        {/* Top-right soft purple ambient glow */}
-        <div className="ambient-glow w-[550px] h-[550px] top-[15%] -right-36 bg-neonPurple/15 animate-float-reverse"></div>
-
-        {/* Mid-section subtle indigo glow */}
-        <div className="ambient-glow w-[450px] h-[450px] top-[45%] -left-28 bg-[#7928ca]/12 animate-pulse-subtle"></div>
-
-        {/* Lower-section cyan accent */}
-        <div className="ambient-glow w-[600px] h-[600px] top-[70%] -right-32 bg-neonBlue/12 animate-float-slow"></div>
-
-        {/* Bottom subtle violet ambient light */}
-        <div className="ambient-glow w-[500px] h-[500px] -bottom-36 left-[20%] bg-neonPurple/15 animate-float-reverse"></div>
+        {/* Soft static ambient glow orbs */}
+        <div className={`ambient-glow w-[350px] md:w-[600px] h-[350px] md:h-[600px] -top-32 -left-32 ${isDark ? 'bg-cyan-500/10' : 'bg-sky-400/15'}`}></div>
+        <div className={`ambient-glow w-[350px] md:w-[600px] h-[350px] md:h-[600px] top-[25%] -right-32 ${isDark ? 'bg-purple-600/10' : 'bg-indigo-400/15'}`}></div>
+        <div className={`ambient-glow w-[350px] md:w-[600px] h-[350px] md:h-[600px] top-[60%] -left-32 ${isDark ? 'bg-cyan-500/10' : 'bg-sky-400/15'}`}></div>
+        <div className={`ambient-glow w-[350px] md:w-[600px] h-[350px] md:h-[600px] -bottom-32 right-10 ${isDark ? 'bg-purple-600/10' : 'bg-purple-400/15'}`}></div>
       </div>
 
-      {/* Main Content */}
+      {/* Main Content Sections */}
       <div className="relative z-10">
         <Navbar />
         <Hero />
@@ -85,22 +77,32 @@ function App() {
         <Certifications />
         <Contact />
         
-        <footer className="py-8 border-t border-white/10 text-center bg-black/20 backdrop-blur-sm">
-          <p className="text-gray-500 text-sm">
+        <footer className={`py-8 border-t ${isDark ? 'border-white/10 bg-black/20' : 'border-slate-200 bg-white/50'} text-center backdrop-blur-md`}>
+          <p className={`${isDark ? 'text-gray-400' : 'text-slate-500'} text-xs sm:text-sm px-4`}>
             © {new Date().getFullYear()} Trivin S. All rights reserved.
           </p>
         </footer>
       </div>
 
+      {/* Scroll to top button */}
       {showScrollTop && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 p-3 rounded-full bg-gradient-to-r from-neonBlue to-neonPurple text-white shadow-[0_0_15px_rgba(69,243,255,0.4)] z-40 hover:scale-110 transition-transform duration-300 backdrop-blur-sm"
+          aria-label="Scroll to top"
+          className="fixed bottom-6 right-6 p-3 rounded-full bg-gradient-to-r from-neonBlue to-neonPurple text-white shadow-lg z-40 hover:scale-110 active:scale-95 transition-all duration-300 backdrop-blur-sm"
         >
-          <ArrowUp size={24} />
+          <ArrowUp size={20} className="stroke-[2.5]" />
         </button>
       )}
     </div>
+  );
+}
+
+function App() {
+  return (
+    <ThemeProvider>
+      <PortfolioContent />
+    </ThemeProvider>
   );
 }
 

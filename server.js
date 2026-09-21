@@ -80,6 +80,12 @@ app.get('/api/portfolio', (req, res) => {
 
             experience: [
                 {
+                    role: "IT Intern (IT Domain)",
+                    company: "JK Tyre & Industries Ltd",
+                    duration: "2 Months (July–August 2026)",
+                    details: "Projects: JK Tyre Scanner Fall Detection and Alert System, TBM Live Dashboard, and Smart Ticketing System."
+                },
+                {
                     role: "Python Programmer",
                     company: "Cipherbyte Technologies",
                     duration: "1 Month (August 2024)",

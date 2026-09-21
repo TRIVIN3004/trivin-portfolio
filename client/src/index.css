@@ -2,33 +2,88 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --bg-main: #0B0C10;
+    --text-main: #e2e8f0;
+    --text-muted: #94a3b8;
+    --card-bg: rgba(255, 255, 255, 0.035);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+
+  html.light {
+    --bg-main: #F4F7FB;
+    --text-main: #0F172A;
+    --text-muted: #475569;
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --card-border: rgba(0, 0, 0, 0.08);
+    --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(0, 0, 0, 0.04);
+  }
+
+  body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
+  }
+}
+
 @layer utilities {
   .glass {
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--card-bg);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    border: 1px solid var(--card-border);
+    box-shadow: var(--card-shadow);
   }
+
   .glass-hover {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .glass-hover:hover {
-    background: rgba(255, 255, 255, 0.055);
-    border-color: rgba(69, 243, 255, 0.3);
-    box-shadow: 0 12px 30px -10px rgba(69, 243, 255, 0.15);
+
+  .dark .glass-hover:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(69, 243, 255, 0.35);
+    box-shadow: 0 16px 36px -10px rgba(69, 243, 255, 0.18);
   }
+
+  .light .glass-hover:hover {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(2, 132, 199, 0.35);
+    box-shadow: 0 16px 36px -10px rgba(2, 132, 199, 0.16);
+  }
+
   .text-glow {
     text-shadow: 0 0 12px rgba(69, 243, 255, 0.5);
   }
+
   .text-glow-purple {
     text-shadow: 0 0 12px rgba(176, 38, 255, 0.5);
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
   }
 }
 
 /* Subtle dot-grid ambient background texture */
-.bg-grid-pattern {
+.dark .bg-grid-pattern {
   background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.light .bg-grid-pattern {
+  background-image: radial-gradient(rgba(15, 23, 42, 0.06) 1px, transparent 1px);
   background-size: 32px 32px;
 }
 
@@ -45,13 +100,25 @@
 ::-webkit-scrollbar {
   width: 8px;
 }
-::-webkit-scrollbar-track {
+.dark ::-webkit-scrollbar-track {
   background: #0B0C10;
 }
-::-webkit-scrollbar-thumb {
+.light ::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+
+.dark ::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.15);
   border-radius: 4px;
 }
-::-webkit-scrollbar-thumb:hover {
+.light ::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
   background: rgba(69, 243, 255, 0.4);
+}
+.light ::-webkit-scrollbar-thumb:hover {
+  background: rgba(2, 132, 199, 0.4);
 }
