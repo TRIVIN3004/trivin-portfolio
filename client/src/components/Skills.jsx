@@ -17,15 +17,15 @@ const skillCategories = [
     ]
   },
   {
-    category: "Full Stack & Web Development",
+    category: "Product & Full Stack Engineering",
     icon: Globe,
     color: "from-purple-500 to-pink-600",
     skills: [
-      { name: "React.js & Vite", level: 85 },
-      { name: "Node.js & Express", level: 80 },
-      { name: "Tailwind CSS & CSS3", level: 90 },
-      { name: "REST APIs & WebSockets", level: 82 },
-      { name: "HTML5 / JavaScript (ES6+)", level: 90 },
+      { name: "Product Engineering & Architecture", level: 88 },
+      { name: "React.js & Vite", level: 86 },
+      { name: "Node.js & Express", level: 82 },
+      { name: "REST APIs & WebSockets", level: 84 },
+      { name: "Tailwind CSS & Modern UI", level: 90 },
     ]
   },
   {

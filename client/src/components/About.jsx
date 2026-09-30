@@ -4,7 +4,7 @@ import Card3D from './Card3D';
 import { Award, Briefcase, Code, GraduationCap } from 'lucide-react';
 
 const stats = [
-  { label: "Internships & Training", value: "4+", icon: Briefcase, color: "text-neonBlue" },
+  { label: "Experience & Roles", value: "5+", icon: Briefcase, color: "text-neonBlue" },
   { label: "Projects Built", value: "12+", icon: Code, color: "text-neonPurple" },
   { label: "Academic CGPA", value: "8.56", icon: GraduationCap, color: "text-emerald-400" },
   { label: "Certifications", value: "10+", icon: Award, color: "text-amber-400" },
@@ -34,8 +34,8 @@ const About = () => {
           <div className="glass rounded-2xl md:rounded-3xl p-6 sm:p-8 md:p-12 shadow-xl relative overflow-hidden">
             <div className="relative z-10">
               <p className={`text-sm sm:text-base md:text-lg leading-relaxed font-light mb-6 md:mb-8 ${isDark ? 'text-gray-300' : 'text-slate-700'}`}>
-                <strong className={`font-semibold ${isDark ? 'text-white' : 'text-slate-900'}`}>AI & Data Science student</strong> passionate about engineering real-world intelligent systems, participating in high-impact hackathons, and driving innovation. 
-                I have gained hands-on industry experience at <strong className={isDark ? 'text-neonBlue' : 'text-indigo-600'}>JK Tyre & Industries Ltd</strong> building computer vision alert mechanisms and real-time telemetry dashboards, alongside global exposure at the <strong className={isDark ? 'text-neonPurple' : 'text-purple-600'}>USIM Malaysia International Bootcamp</strong>.
+                <strong className={`font-semibold ${isDark ? 'text-white' : 'text-slate-900'}`}>Associate Product Engineer & AI/Data Science specialist</strong> passionate about engineering real-world intelligent systems, participating in high-impact hackathons, and driving innovation. 
+                Currently working at <strong className={isDark ? 'text-neonBlue' : 'text-indigo-600'}>Seconyx Technologies</strong>, with hands-on industrial experience at <strong className={isDark ? 'text-neonPurple' : 'text-purple-600'}>JK Tyre & Industries Ltd</strong> building computer vision alert mechanisms and real-time telemetry dashboards, alongside global exposure at the <strong className={isDark ? 'text-neonPurple' : 'text-purple-600'}>USIM Malaysia International Bootcamp</strong>.
               </p>
 
               {/* Stats Grid */}

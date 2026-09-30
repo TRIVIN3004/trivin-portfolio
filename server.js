@@ -23,11 +23,10 @@ app.get('/api/portfolio', (req, res) => {
             title: "AI student | AI & ML Enthusiast",
 
             skills: [
-                "MongoDB", "React.js", "Python", "C",
-                "Machine Learning", "Deep Learning",
-                "OpenCV", "MediaPipe", "SQL", "Excel",
-                "Communication",
-                "Problem Solving (Skillrack, LeetCode)"
+                "Product Engineering", "React.js", "Node.js", "Python",
+                "Machine Learning", "Deep Learning", "Computer Vision",
+                "OpenCV", "MediaPipe", "SQL", "MongoDB", "REST APIs",
+                "Problem Solving (Skillrack, LeetCode)", "Communication"
             ],
 
             projects: [
@@ -79,6 +78,12 @@ app.get('/api/portfolio', (req, res) => {
             ],
 
             experience: [
+                {
+                    role: "Associate Product Engineer",
+                    company: "Seconyx Technologies",
+                    duration: "Sep 2026 – Present",
+                    details: "Architecting product solutions, scalable web applications, and intelligent full-stack systems."
+                },
                 {
                     role: "IT Intern (IT Domain)",
                     company: "JK Tyre & Industries Ltd",

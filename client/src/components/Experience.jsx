@@ -1,9 +1,26 @@
 import { motion } from 'framer-motion';
-import { Briefcase, Globe, Code, Cpu } from 'lucide-react';
+import { Briefcase, Globe, Code, Cpu, Sparkles } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import Card3D from './Card3D';
+import seconyxLogo from '../../../public/img/seconyx.png';
 
 const experiences = [
+  {
+    type: "job",
+    title: "Associate Product Engineer",
+    organization: "Seconyx Technologies",
+    duration: "September 2026 – Present",
+    icon: <Sparkles size={18} className="md:w-5 md:h-5" />,
+    logo: seconyxLogo,
+    badge: "Current Role 🚀",
+    skills: ["Product Engineering", "Full-Stack Development", "System Architecture", "AI Integration", "React & Node.js", "REST APIs"],
+    points: [
+      "Architecting and delivering innovative software solutions, scalable web applications, and core product features.",
+      "Collaborating on full-stack architecture, clean API design, and performant backend services.",
+      "Integrating AI and intelligent automation workflows into enterprise product ecosystems.",
+      "Driving product quality, agile development cycles, and continuous performance optimization."
+    ]
+  },
   {
     type: "internship",
     title: "IT Intern (IT Domain)",
@@ -11,6 +28,7 @@ const experiences = [
     duration: "July 2026 – August 2026 (2 Months)",
     icon: <Briefcase size={18} className="md:w-5 md:h-5" />,
     badge: "Industrial Internship 🏭",
+    skills: ["Computer Vision", "Python", "Telemetry Dashboard", "IT Automation"],
     points: [
       "JK Tyre Scanner Fall Detection & Alert System: Developed an automated computer vision safety monitoring system to detect scanner drops and dispatch instantaneous alert triggers.",
       "TBM Live Dashboard: Engineered a real-time Tire Building Machine (TBM) operational dashboard for live telemetry, sensor monitoring, and production analytics.",
@@ -25,6 +43,7 @@ const experiences = [
     duration: "June 2025",
     icon: <Globe size={18} className="md:w-5 md:h-5" />,
     badge: "International 🌍",
+    skills: ["AI/ML", "IoT Architecture", "Power BI", "Global R&D"],
     points: [
       "Selected for international technology bootcamp at Universiti Sains Islam Malaysia",
       "Gained comprehensive global exposure to advanced AI, Deep Learning, IoT architectures, and Power BI dashboards",
@@ -38,6 +57,7 @@ const experiences = [
     organization: "Lunar A Quest Technology",
     duration: "2025",
     icon: <Cpu size={18} className="md:w-5 md:h-5" />,
+    skills: ["Computer Vision", "MediaPipe", "OpenCV", "Deep Neural Networks"],
     points: [
       "Developed AI and computer vision modules including virtual try-on systems",
       "Implemented image processing pipelines and deep neural network models",
@@ -50,6 +70,7 @@ const experiences = [
     organization: "Cipherbyte Technologies",
     duration: "August 2024 (1 Month)",
     icon: <Code size={18} className="md:w-5 md:h-5" />,
+    skills: ["Python", "Automation Scripts", "Software Design", "Data Structures"],
     points: [
       "Developed Python-based automation scripts and backend components",
       "Solved algorithmic problems and contributed to real-time coding tasks",
@@ -62,6 +83,7 @@ const experiences = [
     organization: "Corizo & Intel Inc.",
     duration: "August – September 2024 (2 Months)",
     icon: <Briefcase size={18} className="md:w-5 md:h-5" />,
+    skills: ["Machine Learning", "Data Pipelines", "Predictive Modeling", "Intel AI Tools"],
     points: [
       "Hands-on training in machine learning model development and evaluation",
       "Engineered data pipelines, feature extraction, and predictive modeling workflows",
@@ -92,15 +114,15 @@ const Experience = () => {
         {/* Timeline Container */}
         <div className="space-y-6 md:space-y-8 relative before:absolute before:inset-0 before:left-4 sm:before:left-5 md:before:left-1/2 before:-translate-x-px before:h-full before:w-0.5 before:bg-gradient-to-b before:from-neonBlue before:via-neonPurple before:to-transparent">
           {experiences.map((exp, index) => {
-            const isEven = index % 2 === 0;
-            
             return (
               <div key={index} className="relative flex items-start md:items-center md:justify-between md:odd:flex-row-reverse group">
                 {/* Timeline Icon Node */}
                 <div className={`absolute left-4 sm:left-5 md:left-1/2 -translate-x-1/2 top-4 md:top-auto flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full border-2 md:border-4 ${
                   isDark ? 'border-darkBg' : 'border-slate-100'
                 } ${
-                  exp.type === 'bootcamp'
+                  exp.type === 'job'
+                    ? 'bg-gradient-to-tr from-neonBlue to-neonPurple text-white shadow-lg shadow-neonBlue/20'
+                    : exp.type === 'bootcamp'
                     ? 'bg-neonPurple text-white shadow-md'
                     : 'bg-neonBlue text-white shadow-md'
                 } z-10 transition-transform duration-300 group-hover:scale-110`}>
@@ -119,29 +141,45 @@ const Experience = () => {
                     <div className="glass p-5 md:p-6 rounded-2xl md:rounded-3xl transition-all relative overflow-hidden">
                       {/* Corner Badge */}
                       {exp.badge && (
-                        <div className="absolute top-0 right-0 bg-gradient-to-r from-neonPurple to-[#ff3366] text-white text-[10px] md:text-[11px] font-bold px-2.5 py-0.5 md:py-1 rounded-bl-xl z-10 shadow-sm">
+                        <div className={`absolute top-0 right-0 text-white text-[10px] md:text-[11px] font-bold px-2.5 py-0.5 md:py-1 rounded-bl-xl z-10 shadow-sm ${
+                          exp.type === 'job'
+                            ? 'bg-gradient-to-r from-cyan-500 to-blue-600'
+                            : 'bg-gradient-to-r from-neonPurple to-[#ff3366]'
+                        }`}>
                           {exp.badge}
                         </div>
                       )}
 
                       <div className="relative z-10">
-                        <h3 className={`text-base md:text-lg font-bold mb-1 transition-colors pr-16 md:pr-0 ${
-                          exp.type === 'bootcamp'
-                            ? 'text-neonPurple'
-                            : isDark ? 'text-white group-hover:text-neonBlue' : 'text-slate-900 group-hover:text-indigo-600'
-                        }`}>
-                          {exp.title}
-                        </h3>
-                        <h4 className={`text-xs md:text-sm font-medium mb-1 ${isDark ? 'text-gray-300' : 'text-slate-600'}`}>
-                          {exp.organization}
-                        </h4>
+                        <div className="flex items-center gap-3 mb-2 pr-16 md:pr-0">
+                          {exp.logo && (
+                            <div className="w-10 h-10 rounded-xl p-1 bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center shrink-0 overflow-hidden shadow-inner">
+                              <img src={exp.logo} alt={exp.organization} className="w-full h-full object-contain" />
+                            </div>
+                          )}
+                          <div>
+                            <h3 className={`text-base md:text-lg font-bold leading-tight transition-colors ${
+                              exp.type === 'job'
+                                ? isDark ? 'text-white group-hover:text-neonBlue' : 'text-slate-900 group-hover:text-cyan-600'
+                                : exp.type === 'bootcamp'
+                                ? 'text-neonPurple'
+                                : isDark ? 'text-white group-hover:text-neonBlue' : 'text-slate-900 group-hover:text-indigo-600'
+                            }`}>
+                              {exp.title}
+                            </h3>
+                            <h4 className={`text-xs md:text-sm font-medium ${isDark ? 'text-gray-300' : 'text-slate-600'}`}>
+                              {exp.organization}
+                            </h4>
+                          </div>
+                        </div>
+
                         <p className={`text-[11px] md:text-xs font-mono inline-block px-2 py-0.5 rounded mb-3 ${
                           isDark ? 'text-neonBlue bg-white/5' : 'text-sky-700 bg-sky-50'
                         }`}>
                           {exp.duration}
                         </p>
                         
-                        <ul className="space-y-2">
+                        <ul className="space-y-2 mb-3">
                           {exp.points.map((point, i) => (
                             <li key={i} className={`text-xs md:text-sm flex items-start ${isDark ? 'text-gray-300' : 'text-slate-600'}`}>
                               <span className="text-neonPurple mr-1.5 mt-0.5 font-bold shrink-0">▹</span>
@@ -149,6 +187,24 @@ const Experience = () => {
                             </li>
                           ))}
                         </ul>
+
+                        {/* Skills / Tech Stack Chips */}
+                        {exp.skills && exp.skills.length > 0 && (
+                          <div className="pt-2.5 border-t border-white/10 flex flex-wrap gap-1.5">
+                            {exp.skills.map((skill, sIdx) => (
+                              <span
+                                key={sIdx}
+                                className={`text-[10px] md:text-[11px] font-medium px-2 py-0.5 rounded-md transition-all ${
+                                  isDark
+                                    ? 'bg-neonBlue/10 text-cyan-300 border border-neonBlue/20'
+                                    : 'bg-indigo-50 text-indigo-700 border border-indigo-100'
+                                }`}
+                              >
+                                {skill}
+                              </span>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     </div>
                   </Card3D>
